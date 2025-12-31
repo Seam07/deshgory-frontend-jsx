@@ -59,7 +59,7 @@ const SignUp = () => {
 
           <div className="flex items-center justify-center py-4 w-full relative mt-1">
             <p className="w-full border-t border-gray-400"></p>
-            <p className="text-sm px-2 absolue bg-white whitespace-nowrap">
+            <p className="text-sm px-2 absolute bg-white whitespace-nowrap">
               or sign in with{" "}
             </p>
             <p className="w-full border-t border-gray-400"></p>
@@ -81,7 +81,7 @@ const SignUp = () => {
           name="password"
           className="bg-transparent w-full px-4 py-2.5 rounded-lg text-sm border border-gray-400 outline-none focus:ring-2 focus:ring-purple-500"
           placeholder="password"
-          value={formData.pasword}
+          value={formData.password}
           onChange={handleChange}
           required
         />

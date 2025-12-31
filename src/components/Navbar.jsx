@@ -118,14 +118,14 @@ const Navbar = () => {
       </nav>
 
       <div
-        className={`fixed inset-0 backdrop-blur-sm top-0 left-0 h-[100vh] w-full bg-[#0000001b] bg-opacity-50 z-40 transition-opacity duraton-400 ${
+        className={`fixed inset-0 backdrop-blur-sm top-0 left-0 h-[100vh] w-full bg-[#0000001b] bg-opacity-50 z-40 transition-opacity duration-400 ${
           isSidebarOpen ? "opacity-200 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setIsSidebarOpen(false)}
       ></div>
 
       <div
-        className={`fixed top-0 left-0 h-[100vh] w-[80%] sm:w-[50%] md:w-[350px] bg-gray-900 shadow-lg z-50 p-5 transition-transform duraton-300 ${
+        className={`fixed top-0 left-0 h-[100vh] w-[80%] sm:w-[50%] md:w-[350px] bg-gray-900 shadow-lg z-50 p-5 transition-transform duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -189,7 +189,7 @@ const Navbar = () => {
             </Link>
 
             <Link to="#" className="text-lg font-medium hover:text-purple-500">
-              Become an Instuctor
+              Become an Instructor
             </Link>
           </div>
 

@@ -32,7 +32,6 @@ import "swiper/css/autoplay";
 import "swiper/css/navigation";
 
 import { FreeMode, Pagination, Navigation } from "swiper/modules";
-import { div } from "framer-motion/client";
 
 const viewed = [
   {
@@ -206,7 +205,7 @@ const ItemDetails = () => {
                   About this course
                 </h1>
                 <p className="text-gray-200 leading-relaxed max-w-[600px]">
-                  {course.description || "no description is avalaible"}
+                  {course.description || "no description is available"}
                 </p>
               </div>
               <div className="flex gap-1 mt-5">

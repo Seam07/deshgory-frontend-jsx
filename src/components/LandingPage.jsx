@@ -56,7 +56,7 @@ const requirements = [
 
   {
     img: skillImg2,
-    title: "Earn Certiftes And Degress",
+    title: "Earn Certificates And Degrees",
   },
 
   {
@@ -93,7 +93,7 @@ const categories = [
 
    {
      img: category9,
-     title: "Buisness",
+     title: "Business",
    },
  ];
 
@@ -103,7 +103,7 @@ const reviews = [
     review:
       "DeshGory’s expert-led courses and tracking tools have streamlined our employee training, enhancing skills and productivity effortlessly.",
     img: reviewImg1,
-    work: "Data Analiyst",
+    work: "Data Analyst",
     name: "Sakib Shahariar",
     ratings: 4.5,
   },
@@ -332,7 +332,7 @@ const LandingPage = () => {
           <div className="flex md:w-[50%] relative items-center md:justify-end p-5 md:mx-auto z-0">
             <div className="md:p-10">
               <h1 className="font-semibold text-3xl lg:text-4xl">
-                Becom An Instructor
+                Become An Instructor
               </h1>
               <p className="text-[15px] md:text-md text-gray-600 mt-2 max-w-[600px]">
                 Top instructors from across the globe educate millions of
