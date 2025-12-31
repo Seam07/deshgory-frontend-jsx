@@ -18,18 +18,42 @@ const Courses = () => {
     const fetchCourses = async () => {
       try {
         const res = await axios.get(`${API_BASE}/courses`);
-        setCourses(
-          res.data.data.map(course => ({
-            id: course.id,
-            img: course.thumbnail_url,
-            level: course.difficulty_level,
-            title: course.title,
-            price: `$${course.price}`,
-            courseInfo: "Popular",
-            rating: 4,
-            description: course.description,
-          }))
+        const coursesData = res.data.data;
+        const mappedCourses = await Promise.all(
+          coursesData.map(async (course) => {
+            let rating = 0;
+            let tutorName = 'Instructor';
+            try {
+              const reviewsRes = await axios.get(`${API_BASE}/reviews/course/${course.id}`);
+              const reviews = reviewsRes.data.data;
+              if (reviews.length > 0) {
+                const total = reviews.reduce((sum, r) => sum + r.rating, 0);
+                rating = total / reviews.length;
+                console.log(`Course ${course.id} has average rating:`, rating);
+              }
+            } catch (err) {
+              console.warn(`Failed to fetch reviews for course ${course.id}:`, err);
+            }
+            try {
+              const userRes = await axios.get(`${API_BASE}/users/${course.creator_id}`);
+              tutorName = userRes.data.name || 'Instructor';
+            } catch (err) {
+              console.warn(`Failed to fetch user for course ${course.id}:`, err);
+            }
+            return {
+              id: course.id,
+              img: course.thumbnail_url,
+              level: course.difficulty_level,
+              title: course.title,
+              price: `৳ ${course.price}`,
+              courseInfo: "Popular",
+              rating,
+              description: course.description,
+              tutorName,
+            };
+          })
         );
+        setCourses(mappedCourses);
       } catch (err) {
         console.error(err);
         setError("Failed to load courses");

@@ -36,8 +36,6 @@ import {
   reviewImg1,
   reviewImg2,
   reviewImg4,
-  instuctorImg,
-  classroomImg,
   Partner1,
   Partner2,
   Partner3,
@@ -167,20 +165,48 @@ const LandingPage = () => {
       setLoading(true);
       setError(null);
       const response = await axios.get(`${API_BASE}/courses`);
-      const mappedCourses = response.data.data.map(course => ({
-        id: course.id,
-        img: course.thumbnail_url,
-        level: course.difficulty_level,
-        title: course.title,
-        price: `$${course.price}`,
-        tutorName: 'Instructor',
-        tutorImg: '',
-        canceledPrice: '',
-        courseInfo: 'Popular',
-        courseDiscount: '',
-        rating: 4,
-        description: course.description,
-      }));
+      const coursesData = response.data.data;
+
+      const mappedCourses = await Promise.all(
+        coursesData.map(async (course) => {
+          let rating = 0;
+          let tutorName = 'Instructor';
+
+          try {
+            const reviewsResponse = await axios.get(`${API_BASE}/reviews/course/${course.id}`);
+            const reviews = reviewsResponse.data.data;
+            if (reviews.length > 0) {
+              const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+              rating = totalRating / reviews.length;
+            }
+          } catch (err) {
+            console.warn(`Failed to fetch reviews for course ${course.id}:`, err);
+          }
+
+          try {
+            const userResponse = await axios.get(`${API_BASE}/users/${course.creator_id}`);
+            tutorName = userResponse.data.name || 'Instructor';
+          } catch (err) {
+            console.warn(`Failed to fetch user for course ${course.id}:`, err);
+          }
+
+          return {
+            id: course.id,
+            img: course.thumbnail_url,
+            level: course.difficulty_level,
+            title: course.title,
+            price: `৳ ${course.price}`,
+            tutorName,
+            tutorImg: '',
+            canceledPrice: '',
+            courseInfo: 'Popular',
+            courseDiscount: '',
+            rating,
+            description: course.description,
+          };
+        })
+      );
+
       setCourses(mappedCourses);
     } catch (err) {
       setError(err.message || 'Failed to fetch courses');
@@ -325,167 +351,6 @@ const LandingPage = () => {
                 View More Courses
               </button>
             </Link>
-          </div>
-        </div>
-
-        <div className="flex md:flex-row flex-col-reverse h-[100vh] mt-20 overflow-hidden">
-          <div className="flex md:w-[50%] relative items-center md:justify-end p-5 md:mx-auto z-0">
-            <div className="md:p-10">
-              <h1 className="font-semibold text-3xl lg:text-4xl">
-                Become An Instructor
-              </h1>
-              <p className="text-[15px] md:text-md text-gray-600 mt-2 max-w-[600px]">
-                Top instructors from across the globe educate millions of
-                students on DeshGory. Renowned experts from various fields
-                share their knowledge, empowering learners worldwide.
-              </p>
-
-              <ul className="space-y-4 mt-5 text-[15px] md:text-md">
-                <li className="flex items-center gap-2">
-                  <RiCheckLine
-                    color="white"
-                    size={19}
-                    className="bg-purple-500 rounded-full"
-                  />
-                  70% Pay from every course
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <RiCheckLine
-                    color="white"
-                    size={19}
-                    className="bg-purple-500 rounded-full"
-                  />
-                  70% Pay from every course
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <RiCheckLine
-                    color="white"
-                    size={19}
-                    className="bg-purple-500 rounded-full"
-                  />
-                  70% Pay from every course
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <RiCheckLine
-                    color="white"
-                    size={19}
-                    className="bg-purple-500 rounded-full"
-                  />
-                  70% Pay from every course
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <RiCheckLine
-                    color="white"
-                    size={19}
-                    className="bg-purple-500 rounded-full"
-                  />
-                  70% Pay from every course
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <RiCheckLine
-                    color="white"
-                    size={19}
-                    className="bg-purple-500 rounded-full"
-                  />
-                  70% Pay from every course
-                </li>
-              </ul>
-
-              <button className="flex items-center bg-purple-500 text-white text-lg font-semibold px-6 md:py-4 p-3 rounded-lg cursor-pointer mt-10">
-                Start teaching today
-              </button>
-            </div>
-          </div>
-
-          <img
-            src={instuctorImg}
-            className="md:w-[50%] md:h-full h-[200px] object-cover"
-            alt=""
-          />
-        </div>
-
-        <div className="flex md:flex-row flex-col items-center justify-center px-0 h-[100vh] md:mt-0 mt-20">
-          <img
-            src={classroomImg}
-            className="md:w-[50%] w-[100%] md:h-full h-[200px] object-cover"
-            alt=""
-          />
-
-          <div className="md:p-10 p-5 w-full">
-            <h1 className="font-semibold text-2xl lg:text-4xl text-balance">
-              Transform Access to Education
-            </h1>
-
-            <p className="text-[15px] md:text-md text-gray-600 mt-2 max-w-[600px]">
-              Create an account to receive our newsletter, course
-              recommendations and promotions. Create an account to receive our
-              newsletter,
-            </p>
-
-            <ul className="space-y-4 mt-5 text-[15px] md:text-md">
-              <li className="flex items-center gap-2">
-                <RiCheckLine
-                  color="white"
-                  size={19}
-                  className="bg-purple-500 rounded-full"
-                />
-                70% Pay from every course
-              </li>
-
-              <li className="flex items-center gap-2">
-                <RiCheckLine
-                  color="white"
-                  size={19}
-                  className="bg-purple-500 rounded-full"
-                />
-                70% Pay from every course
-              </li>
-
-              <li className="flex items-center gap-2">
-                <RiCheckLine
-                  color="white"
-                  size={19}
-                  className="bg-purple-500 rounded-full"
-                />
-                70% Pay from every course
-              </li>
-
-              <li className="flex items-center gap-2">
-                <RiCheckLine
-                  color="white"
-                  size={19}
-                  className="bg-purple-500 rounded-full"
-                />
-                70% Pay from every course
-              </li>
-
-              <li className="flex items-center gap-2">
-                <RiCheckLine
-                  color="white"
-                  size={19}
-                  className="bg-purple-500 rounded-full"
-                />
-                70% Pay from every course
-              </li>
-
-              <li className="flex items-center gap-2">
-                <RiCheckLine
-                  color="white"
-                  size={19}
-                  className="bg-purple-500 rounded-full"
-                />
-                70% Pay from every course
-              </li>
-            </ul>
-
-            <button className="flex items-center bg-purple-500 text-white text-lg font-semibold px-6 md:py-4 p-3 rounded-lg cursor-pointer mt-10">
-              Register for free
-            </button>
           </div>
         </div>
 

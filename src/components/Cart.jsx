@@ -66,7 +66,7 @@ const Cart = () => {
       img: course1,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$129.00",
+      price: "৳129.00",
       tutorName: "James Maximus",
       rating: 2,
     },
@@ -75,7 +75,7 @@ const Cart = () => {
       img: course2,
       level: "Begginer",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$9.00",
+      price: "৳9.00",
       tutorName: "James Maximus",
       rating: 4.5,
 
@@ -85,7 +85,7 @@ const Cart = () => {
       img: course3,
       level: "Amateur",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$29.10",
+      price: "৳29.10",
       tutorName: "James Maximus",
       rating: 5,
 
@@ -95,7 +95,7 @@ const Cart = () => {
       img: course1,
       level: "Expert",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$39.00",
+      price: "৳39.00",
       tutorName: "James Maximus",
       rating: 4,
 
@@ -105,7 +105,7 @@ const Cart = () => {
       img: course3,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 4.5,
 
@@ -115,7 +115,7 @@ const Cart = () => {
       img: course2,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 4,
 
@@ -125,7 +125,7 @@ const Cart = () => {
       img: course3,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 5,
 
@@ -135,7 +135,7 @@ const Cart = () => {
       img: course1,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 3.5,
 
@@ -147,7 +147,7 @@ const Cart = () => {
       img: course3,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$129.00",
+      price: "৳129.00",
       tutorName: "James Maximus",
       rating: 2.5,
     },
@@ -156,7 +156,7 @@ const Cart = () => {
       img: course1,
       level: "Begginer",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$9.00",
+      price: "৳9.00",
       tutorName: "James Maximus",
       rating: 4.5,
     },
@@ -165,7 +165,7 @@ const Cart = () => {
       img: course2,
       level: "Amateur",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$29.10",
+      price: "৳29.10",
       tutorName: "James Maximus",
       rating: 5,
     },
@@ -174,7 +174,7 @@ const Cart = () => {
       img: course1,
       level: "Expert",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$39.00",
+      price: "৳39.00",
       tutorName: "James Maximus",
       rating: 3.5,
     },
@@ -183,7 +183,7 @@ const Cart = () => {
       img: course2,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 2,
     },
@@ -192,7 +192,7 @@ const Cart = () => {
       img: course2,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 4,
     },
@@ -201,7 +201,7 @@ const Cart = () => {
       img: course3,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 4,
 
@@ -211,7 +211,7 @@ const Cart = () => {
       img: course1,
       level: "pro",
       title: "How to Make a Pizza in 30 minutes, recipe in description",
-      price: "$19.00",
+      price: "৳19.00",
       tutorName: "James Maximus",
       rating: 4,
 
@@ -271,7 +271,7 @@ const Cart = () => {
                         By {item.instructor}
                       </p>
                       <p className="text-md font-semibold mt-1">
-                        ${item.price.toFixed(2)}
+                        ৳${item.price.toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -309,22 +309,22 @@ const Cart = () => {
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <div className="flex justify-between text-gray-700 mb-2">
               <span>Subtotal</span>
-              <span>${subtotal.toFixed(2)} </span>
+              <span>৳${subtotal.toFixed(2)} </span>
             </div>
 
             <div className="flex justify-between text-gray-700 mb-2">
               <span>Discount</span>
-              <span className="text-green-600">${discount.toFixed(2)} </span>
+              <span className="text-green-600">৳${discount.toFixed(2)} </span>
             </div>
 
             <div className="flex justify-between text-gray-700 mb-2">
               <span>VAT(5%)</span>
-              <span>${VAT.toFixed(2)} </span>
+              <span>৳${VAT.toFixed(2)} </span>
             </div>
             <hr className="my-3" />
             <div className="flex justify-between text-lg semibold">
               <span>Total</span>
-              <span>${total.toFixed(2)} </span>
+              <span>৳${total.toFixed(2)} </span>
             </div>
             <button
               className="mt-6 w-full bg-purple-600 text-white py-3 rounded-md text-lg font-medium hover:bg-purple-700 transition cursor-pointer"
@@ -387,7 +387,7 @@ const Cart = () => {
                       ({view.rating})
                     </span>
                   </div>
-                  <p className="text-md font-medium mt-1">$29.9</p>
+                  <p className="text-md font-medium mt-1">৳29.9</p>
                   <button className="mt-3 w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-700 transition cursor-pointer">
                     Add to Cart
                   </button>
@@ -460,7 +460,7 @@ const Cart = () => {
                       ({courses.rating})
                     </span>
                   </div>
-                  <p className="text-md font-medium mt-1">$29.9</p>
+                  <p className="text-md font-medium mt-1">৳29.9</p>
                   <button className="mt-3 w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-700 transition cursor-pointer">
                     Add to Cart
                   </button>

@@ -38,7 +38,7 @@ const viewed = [
     img: course1,
     level: "pro",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$129.00",
+    price: "৳129.00",
     tutorName: "James Maximus",
   },
 
@@ -46,7 +46,7 @@ const viewed = [
     img: course2,
     level: "Begginer",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$9.00",
+    price: "৳9.00",
     tutorName: "James Maximus",
   },
 
@@ -54,7 +54,7 @@ const viewed = [
     img: course3,
     level: "Amateur",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$29.10",
+    price: "৳29.10",
     tutorName: "James Maximus",
   },
 
@@ -62,7 +62,7 @@ const viewed = [
     img: course1,
     level: "Expert",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$39.00",
+    price: "৳39.00",
     tutorName: "James Maximus",
   },
 
@@ -70,7 +70,7 @@ const viewed = [
     img: course3,
     level: "pro",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$19.00",
+    price: "৳19.00",
     tutorName: "James Maximus",
   },
 
@@ -78,7 +78,7 @@ const viewed = [
     img: course2,
     level: "pro",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$19.00",
+    price: "৳19.00",
     tutorName: "James Maximus",
   },
 
@@ -86,7 +86,7 @@ const viewed = [
     img: course3,
     level: "pro",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$19.00",
+    price: "৳19.00",
     tutorName: "James Maximus",
   },
 
@@ -94,7 +94,7 @@ const viewed = [
     img: course1,
     level: "pro",
     title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "$19.00",
+    price: "৳19.00",
     tutorName: "James Maximus",
   },
 ];
@@ -117,7 +117,7 @@ const ItemDetails = () => {
     courses: 12,
     students: 20000,
     reviews: 2500,
-    rating: 4.5,
+    rating: course.rating,
   };
 
   const requirements = [
@@ -448,7 +448,7 @@ const ItemDetails = () => {
                           <p className="text-gray-600 text-sm mt-3">
                             {view.tutorName}
                           </p>
-                          <p className="text-md font-medium mt-1">$29.9</p>
+                          <p className="text-md font-medium mt-1">৳29.9</p>
                           <button className="mt-3 w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-700 transition cursor-pointer">
                             Add to Cart
                           </button>
