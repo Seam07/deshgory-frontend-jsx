@@ -4,7 +4,7 @@ import { Navbar, Footer } from "../components";
 import CourseCard from "../components/CourseCard";
 import CourseDetailsModal from "../components/CourseDetailsModal";
 
-const API_BASE = "http://localhost:3000/api/v1";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
