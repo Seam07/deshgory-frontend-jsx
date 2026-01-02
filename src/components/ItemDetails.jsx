@@ -111,7 +111,6 @@ const ItemDetails = () => {
         </div>
       ),
     },
-    // Add more sections as needed
   ];
 
   const reviews = [
@@ -169,45 +168,40 @@ const ItemDetails = () => {
   return (
     <div>
       <Navbar />
-      {/* Hero Section */}
-      <div className="bg-gray-900 text-white py-10">
-        <div className="max-w-[1400px] mx-auto px-5 lg:px-10">
-          {/* Breadcrumb */}
-          <nav className="text-sm text-gray-400 mb-4">
-            <RiHomeLine className="inline mr-1" />
-            <span>Home</span>
-            <RiArrowRightSLine className="inline mx-1" />
-            <span>Development</span>
-            <RiArrowRightSLine className="inline mx-1" />
-            <span>Web Development</span>
-            <RiArrowRightSLine className="inline mx-1" />
-            <span>{course.title}</span>
-          </nav>
-          {/* Title */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{course.title}</h1>
-          {/* Description */}
-          <p className="text-lg mb-4">{course.description || "no description is available"}</p>
-          {/* Rating and Info */}
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex items-center">
-              <StarRatings
-                rating={tutor.rating}
-                starRatedColor="gold"
-                numberOfStars={5}
-                starDimension="20px"
-                starSpacing="2px"
-              />
-              <span className="ml-2 text-yellow-500 font-semibold">({tutor.rating})</span>
-              <span className="ml-2 text-gray-400">({tutor.reviews.toLocaleString()} ratings)</span>
+      <div className="bg-gray-900 text-white py-10 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-5 lg:px-10 flex lg:flex-row flex-col gap-10">
+          <div className="lg:w-2/3">
+            <nav className="text-sm text-gray-400 mb-4">
+              <RiHomeLine className="inline mr-1" />
+              <span>Home</span>
+              <RiArrowRightSLine className="inline mx-1" />
+              <span>Development</span>
+              <RiArrowRightSLine className="inline mx-1" />
+              <span>Web Development</span>
+              <RiArrowRightSLine className="inline mx-1" />
+              <span>{course.title}</span>
+            </nav>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">{course.title}</h1>
+            <p className="text-lg mb-3">{course.description || "no description is available"}</p>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center">
+                <StarRatings
+                  rating={tutor.rating}
+                  starRatedColor="gold"
+                  numberOfStars={5}
+                  starDimension="20px"
+                  starSpacing="2px"
+                />
+                <span className="ml-2 text-yellow-500 font-semibold">({tutor.rating})</span>
+                <span className="ml-2 text-gray-400">({tutor.reviews.toLocaleString()} ratings)</span>
+              </div>
+              <span className="text-gray-400">{tutor.students.toLocaleString()} students</span>
             </div>
-            <span className="text-gray-400">{tutor.students.toLocaleString()} students</span>
-          </div>
-          {/* Instructor */}
-          <p className="text-gray-400">Created by <span className="text-white font-semibold">{tutor.name}</span></p>
-          {/* Language and Last Updated */}
-          <div className="flex gap-4 mt-2 text-gray-400">
-            <span>English</span>
-            <span>Last updated 1/2024</span>
+            <p className="text-gray-400">Created by <span className="text-white font-semibold">{tutor.name}</span></p>
+            <div className="flex gap-4 mt-2 text-gray-400">
+              <span>English</span>
+              <span>Last updated 1/2024</span>
+            </div>
           </div>
         </div>
       </div>
@@ -297,12 +291,12 @@ const ItemDetails = () => {
             </div>
           </div>
 
-          <div className="lg:w-1/3">
-            <div className="sticky top-5 bg-white border border-gray-200 p-6 rounded-lg shadow-lg">
+          <div className="lg:w-1/3 relative z-30 lg:-mt-94">
+            <div className="sticky top-20 bg-white border border-gray-200 p-3 rounded-lg shadow-lg">
               <div className="mb-4">
                 {isVideoPlaying ? (
                   <iframe
-                    className="w-full h-48 rounded"
+                    className="w-full h-60 rounded"
                     src="https://www.youtube.com/embed/KOIvdbjGx70?autoplay=1&mute=1"
                     title="Course preview"
                     frameBorder="0"
@@ -310,10 +304,10 @@ const ItemDetails = () => {
                     allowFullScreen
                   ></iframe>
                 ) : (
-                  <div className="relative w-full h-48 bg-gray-200 rounded flex items-center justify-center cursor-pointer" onClick={() => setIsVideoPlaying(true)}>
+                  <div className="relative w-full h-51 bg-gray-200 rounded flex items-center justify-center cursor-pointer" onClick={() => setIsVideoPlaying(true)}>
                     <img src={course.img} alt="Course preview" className="absolute inset-0 w-full h-full object-cover rounded" />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 rounded"></div>
-                    <RiPlayCircleLine size={50} className="text-white" />
+                    {/* <div className="absolute inset-0 bg-black bg-opacity-50 rounded"></div> */}
+                    <RiPlayCircleLine size={50} className="text-purple-600 z-30" />
                   </div>
                 )}
               </div>
