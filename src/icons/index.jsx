@@ -26,6 +26,7 @@ export {
     RiCircleFill,
     RiMenu3Line,
     RiHeartLine,
+    RiHomeLine,
     RiShoppingCartLine,
     RiUserAddLine,
     RiChat3Line,

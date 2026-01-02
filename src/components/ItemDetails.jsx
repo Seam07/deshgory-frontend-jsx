@@ -2,109 +2,34 @@ import { useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { Footer, Navbar } from "../components";
 import StarRatings from "react-star-ratings";
+import { Collapse } from 'antd';
 
 import {
   RiPlayCircleLine,
   RiArrowRightLine,
-  RiArrowLeftLine,
   RiBookOpenLine,
   RiUser3Line,
   RiMessage2Line,
   RiCheckLine,
-  RiArrowDownSLine,
-  RiTvFill,
+  RiVideoFill,
   RiDownload2Fill,
+  RiTvFill,
   RiInfinityLine,
   RiMedal2Fill,
-  RiVideoFill,
   RiBook3Fill,
   RiCustomerService2Fill,
   RiHeartLine,
+  RiHomeLine,
+  RiArrowRightSLine,
 } from "../icons";
 
-import { course1, course2, course3, tutorAvatar } from "../assets";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "swiper/css/navigation";
-
-import { FreeMode, Pagination, Navigation } from "swiper/modules";
-
-const viewed = [
-  {
-    img: course1,
-    level: "pro",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳129.00",
-    tutorName: "James Maximus",
-  },
-
-  {
-    img: course2,
-    level: "Begginer",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳9.00",
-    tutorName: "James Maximus",
-  },
-
-  {
-    img: course3,
-    level: "Amateur",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳29.10",
-    tutorName: "James Maximus",
-  },
-
-  {
-    img: course1,
-    level: "Expert",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳39.00",
-    tutorName: "James Maximus",
-  },
-
-  {
-    img: course3,
-    level: "pro",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳19.00",
-    tutorName: "James Maximus",
-  },
-
-  {
-    img: course2,
-    level: "pro",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳19.00",
-    tutorName: "James Maximus",
-  },
-
-  {
-    img: course3,
-    level: "pro",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳19.00",
-    tutorName: "James Maximus",
-  },
-
-  {
-    img: course1,
-    level: "pro",
-    title: "How to Make a Pizza in 30 minutes, recipe in description",
-    price: "৳19.00",
-    tutorName: "James Maximus",
-  },
-];
+import { tutorAvatar } from "../assets";
 
 const ItemDetails = () => {
   const location = useLocation();
   const course = location.state?.course;
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [showMoreRequirements, setShowMoreRequirements] = useState(false);
-  const [showMoreLearning, setShowMoreLearning] = useState(false);
 
   if (!course) {
     return <h1 className="text-center text-2xl mt-10">item not found</h1>;
@@ -150,6 +75,60 @@ const ItemDetails = () => {
     "Enhance problem-solving skills by debugging and troubleshooting issues",
   ];
 
+  const courseContent = [
+    {
+      key: '1',
+      label: 'Introduction to React',
+      children: (
+        <div>
+          <p>5 lectures • 30 min</p>
+          <ul>
+            <li>Welcome to the course</li>
+            <li>What is React?</li>
+            <li>Setting up the environment</li>
+            <li>Hello World app</li>
+            <li>Summary</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      key: '2',
+      label: 'Components and Props',
+      children: (
+        <div>
+          <p>8 lectures • 1 hour</p>
+          <ul>
+            <li>Creating components</li>
+            <li>Props in React</li>
+            <li>State vs Props</li>
+            <li>Default props</li>
+            <li>Prop types</li>
+            <li>Children props</li>
+            <li>Conditional rendering</li>
+            <li>Lists and keys</li>
+          </ul>
+        </div>
+      ),
+    },
+    // Add more sections as needed
+  ];
+
+  const reviews = [
+    {
+      name: "John Doe",
+      rating: 5,
+      comment: "Great course! Learned a lot.",
+      date: "2023-10-01"
+    },
+    {
+      name: "Jane Smith",
+      rating: 4,
+      comment: "Very informative.",
+      date: "2023-09-15"
+    },
+  ];
+
   const courseFeatures = [
     {
       icon: <RiVideoFill size={20} className="text-gray-700" />,
@@ -190,331 +169,195 @@ const ItemDetails = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        <div className="relative w-full h-full bg-gray-800 py-5">
-          <div className="flex lg:flex-row flex-col gap-10 items-center justify-beween max-w-[1400px] mx-auto px-5 lg:px-10">
-            <div className="w-full">
-              <span className="pb-2 mt-4">
-                <h1 className="text-xl sm:text-2xl md:text-3xl max-w-[700px] text-gray-100 font-semibold">
-                  {course.title}
-                </h1>
-              </span>
+      {/* Hero Section */}
+      <div className="bg-gray-900 text-white py-10">
+        <div className="max-w-[1400px] mx-auto px-5 lg:px-10">
+          {/* Breadcrumb */}
+          <nav className="text-sm text-gray-400 mb-4">
+            <RiHomeLine className="inline mr-1" />
+            <span>Home</span>
+            <RiArrowRightSLine className="inline mx-1" />
+            <span>Development</span>
+            <RiArrowRightSLine className="inline mx-1" />
+            <span>Web Development</span>
+            <RiArrowRightSLine className="inline mx-1" />
+            <span>{course.title}</span>
+          </nav>
+          {/* Title */}
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">{course.title}</h1>
+          {/* Description */}
+          <p className="text-lg mb-4">{course.description || "no description is available"}</p>
+          {/* Rating and Info */}
+          <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center">
+              <StarRatings
+                rating={tutor.rating}
+                starRatedColor="gold"
+                numberOfStars={5}
+                starDimension="20px"
+                starSpacing="2px"
+              />
+              <span className="ml-2 text-yellow-500 font-semibold">({tutor.rating})</span>
+              <span className="ml-2 text-gray-400">({tutor.reviews.toLocaleString()} ratings)</span>
+            </div>
+            <span className="text-gray-400">{tutor.students.toLocaleString()} students</span>
+          </div>
+          {/* Instructor */}
+          <p className="text-gray-400">Created by <span className="text-white font-semibold">{tutor.name}</span></p>
+          {/* Language and Last Updated */}
+          <div className="flex gap-4 mt-2 text-gray-400">
+            <span>English</span>
+            <span>Last updated 1/2024</span>
+          </div>
+        </div>
+      </div>
 
-              <div className="mt-4">
-                <h1 className="font-semibold text-lg md:text-2xl text-gray-100 md-1">
-                  About this course
-                </h1>
-                <p className="text-gray-200 leading-relaxed max-w-[600px]">
-                  {course.description || "no description is available"}
-                </p>
+      {/* Main Content */}
+      <div className="max-w-[1400px] mx-auto px-5 lg:px-10 py-10">
+        <div className="flex lg:flex-row flex-col gap-10">
+          {/* Left Column */}
+          <div className="lg:w-2/3">
+            {/* What You'll Learn */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">What you'll learn</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {learnings.slice(0, 8).map((learning, index) => (
+                  <div key={index} className="flex items-start">
+                    <RiCheckLine className="text-green-500 mr-2 mt-1" size={16} />
+                    <span>{learning}</span>
+                  </div>
+                ))}
               </div>
-              <div className="flex gap-1 mt-5">
-                <h1 className="font-medium text-xl text-gray-200">Level:</h1>
-                <span className="text-gray-200 text-lg font-medium">
-                  {course.level}
-                </span>
-              </div>
+            </div>
 
-              <div className="flex gap-1">
-                <h1 className="font-medium text-xl text-gray-200">Price:</h1>
-                <span className="text-purple-400 text-md font-semibold mt-1">
-                  {course.price}
-                </span>
-              </div>
+            {/* Course Content */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">Course content</h2>
+              <Collapse items={courseContent} />
+            </div>
 
-              <div className="flex items-center mt-2 gap-1">
-                <StarRatings
-                  rating={tutor.rating}
-                  starRatedColor="gold"
-                  numberOfStars={5}
-                  starDimension="15px"
-                  starSpacing="2px"
-                />
-                <span className="text-xs text-yellow-500 font-semibold">
-                  ({tutor.rating})
-                </span>
-              </div>
-
-              <button className="md:mt-5 mt-3 w-[120px] bg-purple-500 text-white py-2 rounded-md hover:bg-purple-700 transition cursor-pointer">
-                Add to Cart
+            {/* Requirements */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">Requirements</h2>
+              <ul className="list-disc list-inside space-y-2">
+                {(showMoreRequirements ? requirements : requirements.slice(0, 5)).map((req, index) => (
+                  <li key={index}>{req}</li>
+                ))}
+              </ul>
+              <button
+                onClick={() => setShowMoreRequirements(!showMoreRequirements)}
+                className="text-purple-500 mt-3 hover:underline"
+              >
+                {showMoreRequirements ? "Show less" : "Show more"}
               </button>
             </div>
 
-            {isVideoPlaying ? (
-              <iframe
-                className="w-full h-[500px] rounded-sm"
-                src="https://www.youtube.com/embed/KOIvdbjGx70?autoplay=1&mute=1"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            ) : (
-              <div className="flex items-center justify-center relative w-full h-[500px]">
-                <img
-                  src={course.img}
-                  alt={course.img}
-                  className="absolute z-20 w-full h-full object-cover rounded-sm"
-                />
-                <div className="absolute z-30 bg-[#000000a2] w-full h-full rounded-sm"></div>
-                <button
-                  onClick={() => setIsVideoPlaying(true)}
-                  className="absolute z-30 flex justify-center items-center bg-black bg-opacity-40 rounded-full p-1 hover:bg-opacity-50 transition cursor-pointer"
-                >
-                  <RiPlayCircleLine color="#fff" size={50} />
-                </button>
-                <p className="absolute z-30 text-white bottom-43 font-semibold">
-                  Review this Course
-                </p>
+            {/* Full Description */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">Description</h2>
+              <p>{course.description || "no description is available"}</p>
+            </div>
+
+            {/* Instructor */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">Instructor</h2>
+              <div className="flex items-start gap-4">
+                <img src={tutor.avatar} alt={tutor.name} className="w-16 h-16 rounded-full" />
+                <div>
+                  <h3 className="text-xl font-semibold">{tutor.name}</h3>
+                  <p className="text-gray-600">{tutor.level} instructor</p>
+                  <div className="flex gap-4 mt-2 text-sm text-gray-600">
+                    <span>{tutor.courses} courses</span>
+                    <span>{tutor.students.toLocaleString()} students</span>
+                    <span>{tutor.reviews.toLocaleString()} reviews</span>
+                  </div>
+                  <StarRatings
+                    rating={tutor.rating}
+                    starRatedColor="gold"
+                    numberOfStars={5}
+                    starDimension="15px"
+                    starSpacing="2px"
+                  />
+                  <p className="mt-2">{tutor.name} has over 10 years of experience...</p>
+                </div>
               </div>
-            )}
+            </div>
+
+            {/* Reviews */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">Student reviews</h2>
+              {reviews.map((review, index) => (
+                <div key={index} className="border-b pb-4 mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <StarRatings
+                      rating={review.rating}
+                      starRatedColor="gold"
+                      numberOfStars={5}
+                      starDimension="15px"
+                      starSpacing="2px"
+                    />
+                    <span>{review.name}</span>
+                    <span className="text-gray-500">{review.date}</span>
+                  </div>
+                  <p>{review.comment}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Sidebar */}
+          <div className="lg:w-1/3">
+            <div className="sticky top-5 bg-white border border-gray-200 p-6 rounded-lg shadow-lg">
+              {/* Video Preview */}
+              <div className="mb-4">
+                {isVideoPlaying ? (
+                  <iframe
+                    className="w-full h-48 rounded"
+                    src="https://www.youtube.com/embed/KOIvdbjGx70?autoplay=1&mute=1"
+                    title="Course preview"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <div className="relative w-full h-48 bg-gray-200 rounded flex items-center justify-center cursor-pointer" onClick={() => setIsVideoPlaying(true)}>
+                    <img src={course.img} alt="Course preview" className="absolute inset-0 w-full h-full object-cover rounded" />
+                    <div className="absolute inset-0 bg-black bg-opacity-50 rounded"></div>
+                    <RiPlayCircleLine size={50} className="text-white" />
+                  </div>
+                )}
+              </div>
+
+              {/* Price */}
+              <div className="mb-4">
+                <div className="text-3xl font-bold text-purple-600">{course.price}</div>
+                {course.canceledPrice && <div className="text-lg text-gray-500 line-through">{course.canceledPrice}</div>}
+              </div>
+
+              {/* Buttons */}
+              <div className="space-y-2 mb-4">
+                <button className="w-full bg-purple-600 text-white py-3 rounded hover:bg-purple-700">Add to cart</button>
+                <button className="w-full border border-purple-600 text-purple-600 py-3 rounded hover:bg-purple-700 hover:text-white">Buy now</button>
+              </div>
+
+              {/* Guarantee */}
+              <p className="text-sm text-gray-600 mb-4">30-Day Money-Back Guarantee</p>
+
+              {/* This course includes */}
+              <h3 className="font-semibold mb-2">This course includes:</h3>
+              <ul className="space-y-2">
+                {courseFeatures.map((feature, index) => (
+                  <li key={index} className="flex items-center text-sm">
+                    <span className="mr-2">{feature.icon}</span>
+                    {feature.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-
-        <main className="flex flex-col relative max-w-[1400px] mx-auto px-5 lg:px-10">
-          <div className="flex lg:flex-row flex-col-reverse relative py-10 gap-3">
-            <div className="lg:w-[70%]">
-              <div className="space-y-4 relative gap-5 h-fit">
-                <div className="border border-gray-200 p-5 rounded-md">
-                  <h3 className="font-semibold text-xl md:text-2xl text-gray-800 mb-4">
-                    Course Requirements
-                  </h3>
-
-                  <ul className="list-none space-y-3">
-                    {(showMoreRequirements
-                      ? requirements
-                      : requirements.slice(0, 5)
-                    ).map((req, index) => (
-                      <li
-                        key={index}
-                        className="flex items-center text-gray-700"
-                      >
-                        <RiCheckLine
-                          className="mr-2 text-green-500"
-                          size={20}
-                        />
-                        {req}
-                      </li>
-                    ))}
-                  </ul>
-                  <button
-                    onClick={() =>
-                      setShowMoreRequirements(!showMoreRequirements)
-                    }
-                    className="flex items-center text-purple-500 font-medium mt-3 hover:underline"
-                  >
-                    {showMoreRequirements ? "Show Less" : "Show More"}
-                    <RiArrowDownSLine
-                      className={`ml-1 transition-transform duration-300 ${
-                        showMoreRequirements ? "rotate-180" : "rotate-0"
-                      }`}
-                      size={18}
-                    />
-                  </button>
-                </div>
-
-                <div className="border border-gray-200 p-5 rounded-md">
-                  <h3 className="font-semibold text-xl md:text-2xl text-gray-800 mb-4">
-                    What You'll Learn
-                  </h3>
-
-                  <ul className="list-none space-y-3">
-                    {(showMoreLearning ? learnings : learnings.slice(0, 5)).map(
-                      (learning, index) => (
-                        <li
-                          key={index}
-                          className="flex items-center text-gray-700"
-                        >
-                          <RiCheckLine
-                            className="mr-2 text-green-500"
-                            size={20}
-                          />
-                          {learning}
-                        </li>
-                      )
-                    )}
-                  </ul>
-                  <button
-                    onClick={() => setShowMoreLearning(!showMoreLearning)}
-                    className="flex items-center text-purple-500 font-medium mt-3 hover:underline"
-                  >
-                    {showMoreLearning ? "Show Less" : "Show More"}
-                    <RiArrowDownSLine
-                      className={`ml-1 transition-transform duration-300 ${
-                        showMoreLearning ? "rotate-180" : "rotate-0"
-                      }`}
-                      size={18}
-                    />
-                  </button>
-                </div>
-
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-4 p-3 border border-gray-200 w-full h-fit rounded-lg">
-                  <img
-                    src={course.tutorAvatar}
-                    alt={tutor.name}
-                    className="w-full md:w-50 md:h-[100%] sm:h-[400px] h-[350px] rounded-md object-cover"
-                  />
-                  <div>
-                    <h3 className="text-xl text-gray-800 font-semibold">
-                      {tutor.name}
-                    </h3>
-                    <p className="text-gray-600">{tutor.level} instructor</p>
-                    <div className="mt-3 flex flex-wrap gap-3">
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <RiBookOpenLine size={20} className="text-purple-500" />
-                        <span className="font-semibold">{tutor.courses}</span>
-                        Courses
-                      </div>
-
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <RiUser3Line size={20} className="text-green-500" />
-                        <span className="font-semibold">
-                          {tutor.students.toLocaleString()}
-                        </span>
-                        Students
-                      </div>
-
-                      <div className="flex items-center gap-2 text-gray-700">
-                        <RiBookOpenLine size={20} className="text-blue-500" />
-                        <span className="font-semibold">
-                          {tutor.reviews.toLocaleString()}
-                        </span>
-                        Reviews
-                      </div>
-                    </div>
-
-                    <p className="text-[15px] text-gray-700 mt-3 max-w-[500px]">
-                      {tutor.name} has over 10 years of experience in the
-                      industry, teaching thousands of students worldwide.
-                    </p>
-
-                    <div className="flex items-center mt-2">
-                      <StarRatings
-                        rating={tutor.rating}
-                        starRatedColor="gold"
-                        numberOfStars={5}
-                        starDimension="17px"
-                        starSpacing="2px"
-                      />
-                      <span className="ml-2 text-xs text-gray-700 font-semibold">
-                        ({tutor.rating})
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative flex flex-col items-center justify-center gap-0 w-full mt-10 py-10">
-                  <h2 className="text-xl md:text-2xl font-bold mb-3 text-gray-800 text-start w-full">
-                    You also viewed
-                  </h2>
-
-                  <Swiper
-                    spaceBetween={20}
-                    freeMode={false}
-                    autoplay={{
-                      enabled: true,
-                      delay: 200,
-                      disableOnInteraction: false,
-                    }}
-                    loop={true}
-                    navigation={{
-                      enabled: true,
-                      nextEl: ".next-btn",
-                      prevEl: ".prev-btn",
-                    }}
-                    modules={[FreeMode, Pagination, Navigation]}
-                    className="w-full p-5"
-                    breakpoints={{
-                      340: { slidesPerView: 1 },
-                      540: { slidesPerView: 2 },
-                      1024: { slidesPerView: 2 },
-                      1280: { slidesPerView: 3 },
-                    }}
-                  >
-                    {viewed.map((view, index) => (
-                      <SwiperSlide key={index} className="flex mb-6">
-                        <div className="bg-white border border-gray-100 rounded-md p-4">
-                          <img
-                            src={view.img}
-                            alt="course"
-                            className="w-full h-32 object-cover rounded-md"
-                          />
-
-                          <h3 className="text-md font-medium mt-3">
-                            {view.title}
-                          </h3>
-
-                          <p className="text-gray-600 text-sm mt-3">
-                            {view.tutorName}
-                          </p>
-                          <p className="text-md font-medium mt-1">৳29.9</p>
-                          <button className="mt-3 w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-700 transition cursor-pointer">
-                            Add to Cart
-                          </button>
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-
-                  <div className="flex gap-10">
-                    <button className="prev-btn cursor-pointer bg-purple-500 rounded-full p-2">
-                      <RiArrowLeftLine color="white" size={29} />
-                    </button>
-
-                    <button className="next-btn cursor-pointer bg-purple-500 rounded-full p-2">
-                      <RiArrowRightLine color="white" size={29} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="block lg:sticky z-40 top-28 lg:w-[30%] h-fit bg-white lg:shadow-lg border border-gray-200 p-5 md:px-8 py-6 rounded-md">
-              <div className="flex items-center gap-2">
-                <p className="font-bold text-2xl text-purple-500">
-                  {course.price}
-                </p>
-
-                <p className="text-md text-gray-400 line-through">
-                  {course.canceledPrice}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-start gap-2 mt-3">
-                <span className="flex gap-2 items-center w-full">
-                  <button className="w-full bg-purple-500 hover:bg-purple-600 transition duration-0.3s text-white font-semibold p-2 rounded-md cursor-pointer">
-                    Buy now
-                  </button>
-                  <button className="w-fit bg-purple-500 hover:bg-purple-600 transition duration-0.3s text-white font-semibold px-3 py-2.5 rounded-md cursor-pointer">
-                    <RiHeartLine size={20} color="#fff" />
-                  </button>
-                </span>
-                <button className="w-full border-2 border-purple-500 text-purple-500 hover:bg-purple-600 hover:text-white font-semibold p-2 rounded-md cursor-pointer transition duration-0.3s">
-                  Add to cart
-                </button>
-              </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 mt-5">
-                    This course includes:
-                  </h3>
-                  <ul className="space-y-3">
-                    {courseFeatures.map((feature, index) =>(
-                      <li key={index} className="flex items-center text-gray-700">
-                        <span className="mr-3">{feature.icon}</span>
-                        {feature.text}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-8 flex flex-wrap items-center space-x-5 text-purple-700 font-medium">
-                    <button className="hover:underline whitespace-nowrap cursor-pointer">Share</button>
-                    <button className="hover:underline whitespace-nowrap cursor-pointer">Gift this course</button>
-                    <button className="hover:underline whitespace-nowrap cursor-pointer">Apply Coupon</button>
-                  </div>
-            </div>
-          </div>
-        </main>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
