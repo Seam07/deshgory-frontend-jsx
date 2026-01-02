@@ -212,12 +212,9 @@ const ItemDetails = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="max-w-[1400px] mx-auto px-5 lg:px-10 py-10">
         <div className="flex lg:flex-row flex-col gap-10">
-          {/* Left Column */}
           <div className="lg:w-2/3">
-            {/* What You'll Learn */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">What you'll learn</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -230,13 +227,11 @@ const ItemDetails = () => {
               </div>
             </div>
 
-            {/* Course Content */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Course content</h2>
               <Collapse items={courseContent} />
             </div>
 
-            {/* Requirements */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Requirements</h2>
               <ul className="list-disc list-inside space-y-2">
@@ -252,13 +247,11 @@ const ItemDetails = () => {
               </button>
             </div>
 
-            {/* Full Description */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Description</h2>
               <p>{course.description || "no description is available"}</p>
             </div>
 
-            {/* Instructor */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Instructor</h2>
               <div className="flex items-start gap-4">
@@ -283,7 +276,6 @@ const ItemDetails = () => {
               </div>
             </div>
 
-            {/* Reviews */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Student reviews</h2>
               {reviews.map((review, index) => (
@@ -305,10 +297,8 @@ const ItemDetails = () => {
             </div>
           </div>
 
-          {/* Right Sidebar */}
           <div className="lg:w-1/3">
             <div className="sticky top-5 bg-white border border-gray-200 p-6 rounded-lg shadow-lg">
-              {/* Video Preview */}
               <div className="mb-4">
                 {isVideoPlaying ? (
                   <iframe
@@ -328,22 +318,18 @@ const ItemDetails = () => {
                 )}
               </div>
 
-              {/* Price */}
               <div className="mb-4">
                 <div className="text-3xl font-bold text-purple-600">{course.price}</div>
                 {course.canceledPrice && <div className="text-lg text-gray-500 line-through">{course.canceledPrice}</div>}
               </div>
 
-              {/* Buttons */}
               <div className="space-y-2 mb-4">
                 <button className="w-full bg-purple-600 text-white py-3 rounded hover:bg-purple-700">Add to cart</button>
                 <button className="w-full border border-purple-600 text-purple-600 py-3 rounded hover:bg-purple-700 hover:text-white">Buy now</button>
               </div>
 
-              {/* Guarantee */}
               <p className="text-sm text-gray-600 mb-4">30-Day Money-Back Guarantee</p>
 
-              {/* This course includes */}
               <h3 className="font-semibold mb-2">This course includes:</h3>
               <ul className="space-y-2">
                 {courseFeatures.map((feature, index) => (
